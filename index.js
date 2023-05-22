@@ -1,3 +1,5 @@
+const posts = [];
+
 let post = {
   title: "",
   text: "",
@@ -11,9 +13,9 @@ const postsNode = document.querySelector(".js-posts");
 newPostBtnNode.addEventListener("click", function () {
   const postFromUser = getPostFromUser();
 
-  setPost(postFromUser);
+  addPost(postFromUser);
 
-  renderPost();
+  renderPosts();
 });
 
 function getPostFromUser() {
@@ -26,21 +28,28 @@ function getPostFromUser() {
   };
 }
 
-function setPost(newPost) {
-  post = newPost;
+function addPost({ title, text }) {
+  posts.push({
+    title,
+    text,
+  });
 }
 
-function getPost() {
-  return post;
+function getPosts() {
+  return posts;
 }
 
-function renderPost() {
-  const post = getPost();
-  const postHTML = `
-  <div class='post'>
-    <p class='post__title'>${post.title}</p>
-    <p class='post__text'>${post.text}</p>
-  </div>
-  `;
-  postsNode.innerHTML = postHTML;
+function renderPosts() {
+  const posts = getPosts();
+  let postsHTML = "";
+  posts.forEach((post) => {
+    postsHTML += `
+    <div class='post'>
+      <p class='post__title'>${post.title}</p>
+      <p class='post__text'>${post.text}</p>
+    </div>
+    `;
+  });
+
+  postsNode.innerHTML = postsHTML;
 }
