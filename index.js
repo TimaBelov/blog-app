@@ -10,11 +10,16 @@ const titleInputNode = document.querySelector(".js-title-input");
 const postTextInputNode = document.querySelector(".js-post-text-input");
 const newPostBtnNode = document.querySelector(".js-new-post-btn");
 const postsNode = document.querySelector(".js-posts");
+const errorTextNode = document.querySelector(".js-error-text");
 
 newPostBtnNode.addEventListener("click", function () {
   const postFromUser = getPostFromUser();
-
+  if (!checkForLen(postFromUser)) {
+    return;
+  }
   addPost(postFromUser);
+
+  clearInputs();
 
   renderPosts();
 });
@@ -58,4 +63,22 @@ function renderPosts() {
   });
 
   postsNode.innerHTML = postsHTML;
+}
+
+function clearInputs() {
+  titleInputNode.value = "";
+  postTextInputNode.value = "";
+}
+
+function checkForLen(post) {
+  if (post.title.length > 100) {
+    errorTextNode.innerText = "Заголовок больше 100 символов";
+    return false;
+  } else if (post.text.length > 200) {
+    errorTextNode.innerText = "Пост больше 200 символов";
+    return false;
+  } else {
+    errorTextNode.innerHTML = "";
+    return true;
+  }
 }

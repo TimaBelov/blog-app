@@ -4,22 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
     <title>Blog App</title>
   </head>
   <body>
     <div class="row">
       <div class="col">
-        <h2>Новый пост</h2>
-        <input type="text" name="" id="" class="js-title-input title-input" />
-        <input type="text" class="js-post-text-input post-text-input">
+        <h2 class="col__title">Новый пост</h2>
+        <input
+          type="text"
+          name=""
+          id=""
+          class="js-title-input title-input"
+          placeholder="Заголовок"
+        />
+        <textarea
+          class="js-post-text-input post-text-input"
+          placeholder="Напиши пост"
+        ></textarea>
         <button class="js-new-post-btn publication-btn">Опубликовать</button>
+        <p class="js-error-text error-text"></p>
       </div>
       <div class="col">
-          <h2>Лента</h2>
-          <div class="js-posts posts">
-            Тут пока пусто...
-          </div>
+        <h2 class="col__title">Лента</h2>
+        <div class="js-posts posts">Тут пока пусто...</div>
       </div>
     </div>
 
